@@ -289,15 +289,15 @@ workflows:
   default:
     jobs:
       - lint
-      # - build-docker:
-      #     requires:
-      #       - lint
-      # - create-cluster:
-      #     requires:
-      #       - build-docker
-      # - deployment:
-      #     requires:
-      #       - create-cluster
-      # - cleanup:
-      #     requires:
-      #       - deployment
+      - build-docker:
+          requires:
+            - lint
+      - create-cluster:
+          requires:
+            - build-docker
+      - deployment:
+          requires:
+            - create-cluster
+      - cleanup:
+          requires:
+            - deployment
