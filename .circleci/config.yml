@@ -187,7 +187,7 @@ jobs:
       - run:
           command: |
             echo 'run '
-            eksctl create cluster --name flask-app-${CIRCLE_WORKFLOW_ID:0:7} --region=us-east-2
+            eksctl create cluster --name flask-app-${CIRCLE_WORKFLOW_ID:0:7} --region=us-east-2 --profile vulh-uda
             # kubectl get services
             kubectl get deploy,rs,svc,pods
           name: Create cluster
