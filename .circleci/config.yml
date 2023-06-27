@@ -179,6 +179,7 @@ jobs:
     steps:
       - kubernetes/install:
           kubectl-version: v1.22.0
+      - install_awscli
       - run:
           command: |
             echo 'run '
