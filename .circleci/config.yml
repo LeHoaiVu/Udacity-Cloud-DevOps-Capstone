@@ -179,8 +179,6 @@ jobs:
     steps:
       - kubernetes/install:
           kubectl-version: v1.22.0
-      - aws-eks/create-cluster:
-          cluster-name: flask-app-${CIRCLE_WORKFLOW_ID:0:7}
       - run:
           command: |
             echo 'run '
