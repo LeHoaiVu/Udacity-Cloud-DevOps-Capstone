@@ -46,7 +46,8 @@ commands:
       - run:
           name: Install eksctl
           command: |
-            curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar -xf -C /tmp
+            curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz"
+            tar -xzf eksctl_$(uname -s)_amd64.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
             sudo mv /tmp/eksctl /usr/local/bin
 
   install_kubectl:
@@ -184,7 +185,7 @@ jobs:
       - run:
           command: |
             echo 'run '
-            eksctl create cluster --name flask-app-${CIRCLE_WORKFLOW_ID:0:7} --region=us-east-2
+            eksctl create cluster --name flask-app-${CIRCLE_WORKFLOW_ID:0:7} --region=us-east-2 --profile=vulh-uda
             # kubectl get services
             kubectl get deploy,rs,svc,pods
           name: Create cluster
