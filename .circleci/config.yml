@@ -191,7 +191,7 @@ jobs:
             echo 'run '
             # eksctl create cluster --name flask-app-${CIRCLE_WORKFLOW_ID:0:7} --region=us-east-2
             # kubectl get services
-            kubectl get deploy,rs,svc,pods
+            # kubectl get deploy,rs,svc,pods
           name: Create cluster
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
