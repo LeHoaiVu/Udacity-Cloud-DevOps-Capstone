@@ -296,7 +296,7 @@ workflows:
       # - build-docker:
       #     requires:
       #       - lint
-      - create-cluster:
+      - create-cluster
           # requires:
           #   - build-docker
       - deployment:
