@@ -298,10 +298,10 @@ workflows:
       - build-docker:
           requires:
             - lint
-      - create-cluster
+      - create-cluster:
           requires:
             - build-docker
-      - deployment
+      - deployment:
           requires:
             - create-cluster
       - cleanup:
