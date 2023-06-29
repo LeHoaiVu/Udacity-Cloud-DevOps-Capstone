@@ -29,6 +29,15 @@ def _b64decode_helper(request_object):
     decoded_data = BytesIO(base64.b64decode(request.data))
     return decoded_data, size
 
+def _b64decode_helper(request_object):
+    """Returns base64 decoded data and size of encoded data"""
+
+    size=sys.getsizeof(request_object.data)
+    decode_msg = "Decoding data of size: {size}".format(size=size)
+    log.info(decode_msg)
+    decoded_data = BytesIO(base64.b64decode(request.data))
+    return decoded_data, size
+
 @app.route("/")
 def home():
     """/ Route will redirect to API Docs: /apidocs"""
