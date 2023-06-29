@@ -199,6 +199,7 @@ jobs:
     docker:
       - image: cimg/python:3.10
     steps:
+      - install_awscli
       - kubernetes/install:
           kubectl-version: v1.22.0
       # - aws-eks/update-kubeconfig-with-authenticator:
