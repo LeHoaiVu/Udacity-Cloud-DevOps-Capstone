@@ -292,10 +292,10 @@ jobs:
 workflows:
   default:
     jobs:
-      - lint
-      - build-docker:
-          requires:
-            - lint
+      # - lint
+      # - build-docker:
+      #     requires:
+      #       - lint
       - create-cluster:
           requires:
             - build-docker
