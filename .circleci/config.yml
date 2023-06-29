@@ -207,7 +207,7 @@ jobs:
       - run:
           command: |
             # kubectl version --client
-            aws eks update-kubeconfig --name flask-app-c690bb4
+            aws eks update-kubeconfig --name flask-app-c690bb4 --region=us-west-2
             kubectl create deploy python-helloworld --image=lehoaivu52/python-helloworld:latest
             kubectl get deploy,rs,svc,pods
           name: deployment cluster
