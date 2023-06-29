@@ -298,12 +298,24 @@ workflows:
       - build-docker:
           requires:
             - lint
+          filters:
+            branches:
+              only: [release]
       - create-cluster:
           requires:
             - build-docker
+          filters:
+            branches:
+              only: [release]
       - deployment:
           requires:
             - create-cluster
+          filters:
+            branches:
+              only: [release]
       - cleanup:
           requires:
             - deployment
+          filters:
+            branches:
+              only: [release]
