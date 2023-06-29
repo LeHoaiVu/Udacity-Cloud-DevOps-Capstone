@@ -207,12 +207,12 @@ jobs:
       - run:
           command: |
             # kubectl version --client
-            aws eks update-kubeconfig --name flask-app-c690bb4 --region=us-west-2
+            aws eks update-kubeconfig --name flask-app-${CIRCLE_WORKFLOW_ID:0:7} --region=us-west-2
             kubectl create deploy python-helloworld --image=lehoaivu52/python-helloworld:latest
             kubectl get deploy,rs,svc,pods
           name: deployment cluster
       - destroy-environment:
-          workflow_id: c690bb4
+          workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
   delete-cluster:
     docker:
       # - image: cimg/python:3.10
@@ -294,16 +294,16 @@ jobs:
 workflows:
   default:
     jobs:
-      # - lint
-      # - build-docker:
-      #     requires:
-      #       - lint
-      # - create-cluster
-          # requires:
-          #   - build-docker
+      - lint
+      - build-docker:
+          requires:
+            - lint
+      - create-cluster
+          requires:
+            - build-docker
       - deployment
-          # requires:
-          #   - create-cluster
+          requires:
+            - create-cluster
       - cleanup:
           requires:
             - deployment
