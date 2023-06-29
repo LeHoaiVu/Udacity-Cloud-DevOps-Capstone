@@ -294,7 +294,7 @@ jobs:
 workflows:
   default:
     jobs:
-      # - lint
+      - lint
       - build-docker:
           requires:
             - lint
